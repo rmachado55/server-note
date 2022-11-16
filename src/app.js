@@ -1,21 +1,19 @@
 import express from "express";
+import db from './config/dbconnect.js'
+import users from './models/User.js'
+import routes from './routes/index.js'
+
+db.on("error", console.log.bind(console, '# !Conection Error! #'))
+db.once("open", () => {
+    console.log('# - Connection Sucessfull - #')
+})
+
 
 const app = express();
 
 app.use(express.json())
 
-const users = [
-    {id: 1, "name" : "Ricardo Machado", "email" : "ricardo.machado7@hotmail.com", "password" : "apenasteste"},
-    {id: 2, "name" : "Luke Skywalker", "email" : "luke@skywalker.com", "password" : "apenasteste"}
-]
-
-app.get('/', (req,res) => {
-    res.status(200).send('Api Notes');
-})
-
-app.get('/users', (req,res) => {
-    res.status(200).json(users)
-})
+routes(app)
 
 app.post('/users/register', (req, res) => {
     users.push(req.body);
