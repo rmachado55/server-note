@@ -1,5 +1,6 @@
 import express from "express";
 import users from "./usersRoutes.js";
+import notes from "./notesRoutes.js";
 
 const routes = (app) => {
     app.route('/').get((req,res) => {
@@ -9,6 +10,7 @@ const routes = (app) => {
     app.use(
         express.json(),
         users,
+        notes
     )
 }
 
