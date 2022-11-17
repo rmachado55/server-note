@@ -5,12 +5,19 @@ import WithAuth from '../middlewares/auth.js';
 const router = express.Router();
 
 router
-    .post('/notes', WithAuth, NoteController.createNote)
+    .get('/notes/search', WithAuth, NoteController.searchNote)
+    
+    .get('/notes/view', WithAuth, NoteController.viewAllNotes)
+  
+    .post('/notes/create', WithAuth, NoteController.createNote)
 
-    .get('/notes/:id', WithAuth, NoteController.viewNote)
+    .delete('/notes/delete/:id', WithAuth, NoteController.deleteNote)
 
-    .get('/notes', WithAuth, NoteController.viewAllNotes)
+    .put('/notes/edit/:id', WithAuth, NoteController.editNote)
 
-    .put('/notes/:id', WithAuth, NoteController.editNote)
+    .get('/notes/view/:id', WithAuth, NoteController.viewNote)
+   
+
+
 
 export default router;

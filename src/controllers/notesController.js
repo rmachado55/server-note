@@ -1,5 +1,4 @@
-import notes from '../models/Note.js'
-
+import notes from '../models/Note.js';
 
 class NoteController{
 
@@ -57,8 +56,34 @@ class NoteController{
             } catch (error) {
                 res.status(500).json({error: 'Failed to update the Note'});
             }
+    }
+    
+    static deleteNote = async (req, res) => {
+        const { id } = req.params;
+        try {
+            let note = await notes.findById(id);
+                if(isOwner(req.user, note)){
+                    await note.delete();
+                    res.status(204).json({ message : "Sucessfully Deleted"})
+                } else
+                    res.status(403).json({ error: "Permission denied"})
+        } catch (error){
+            res.status(500).json({ error: "ERROR trying to delete the Note"})
         }
     }
+
+    static searchNote = async (req, res) => {
+        const { query } = req.query;
+        try{
+            let result = await notes
+                .find({ author : req.user._id })
+                .find({ $text : { $search : query }})
+            res.json(result)
+        } catch (error) {
+            res.status(500).json({ error : error})
+        }
+    }
+}
 
 const isOwner = (user, note) => {
     if(JSON.stringify(user._id) == JSON.stringify(note.author._id))

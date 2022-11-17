@@ -13,6 +13,7 @@ const noteSchema = new mongoose.Schema(
         updated_at: {type: Date, default: Date.now}
     })
 
+    noteSchema.index({'title' : 'text', 'body' : 'text'})
 
 const notes = mongoose.model('notes', noteSchema)
 
