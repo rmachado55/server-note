@@ -15,8 +15,7 @@ router
 
     .put('/notes/edit/:id', WithAuth, NoteController.editNote)
 
-    .get('/notes/view/:id', WithAuth, NoteController.viewNote)
-   
+    .get('/notes/view/:id', WithAuth, NoteController.viewNote) 
 
 
 

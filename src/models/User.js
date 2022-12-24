@@ -7,10 +7,7 @@ const userSchema = new mongoose.Schema(
         email: {type: String, required: true},
         name: {type: String, required: true},
         password: {type: String, required:true},
-        color: {type: String},
-        created_at: {type: Date, default: Date.now},
-        updated_at: {type: Date, default: Date.now}
-    })
+        })
 
     userSchema.pre('save', function (next) {
         if (this.isNew || this.isModified('password')){    

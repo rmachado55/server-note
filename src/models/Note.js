@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const noteSchema = new mongoose.Schema(
     {
-        title: String,
-        body: String,        
+        title: {type: String, default: "Minha anotação", required: true}, 
+        body: String,
         author: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'users',
