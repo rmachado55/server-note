@@ -1,12 +1,15 @@
 {
   "name": "server-note",
   "version": "1.0.0",
-  "description": "Evernote Clone (building)",
+  "description": "Server Note (building)",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js"
+  },
+  "engines" : {
+  "node" : "18.12.1"
   },
   "author": "Ricardo Machado",
   "license": "ISC",
