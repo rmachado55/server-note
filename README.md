@@ -1,6 +1,6 @@
 # SERVER-NOTE (API)
 API-Rest referente a aplicação SERVER-NOTE (um clone 100% funcional do One Note, aplicativo de criação, edição e gerenciamento de Notas);
-O front-End da aplicação ainda está em desenvolvimento.
+O front-End da aplicação ainda está em desenvolvimento (https://github.com/rmachado55/server-note-front).
 
 FUNCIONAMENTO
 - npm run dev -> inicia a API na porta 3001
